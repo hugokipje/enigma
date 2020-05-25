@@ -19,7 +19,36 @@ def start(a,b,c):
   rotorB = shift(alfabet,b)
   rotorC = shift(alfabet,c)
 
-start(1,2,3)
-print(rotorA)
-print(rotorB)
-print(rotorC)
+def encrypt(tekst):  
+  global rotorA
+  global rotorB
+  global rotorC
+
+  encryptedtekst = ""
+  tekst = tekst.lower()  
+
+  for letter in tekst:
+    if not(letter in alfabet):
+      encryptedtekst = encryptedtekst + letter
+      continue
+
+    rotorA = shift(rotorA,1)
+    idx = alfabet.index(letter)
+    encryptedletter = rotorA[idx]
+    print(encryptedletter)
+    
+    idx = alfabet.index(encryptedletter)
+    encryptedletter = rotorB[idx]
+    print(encryptedletter)
+    
+    idx = alfabet.index(encryptedletter)
+    encryptedletter = rotorC[idx]
+    print(encryptedletter)
+
+    encryptedtekst = encryptedtekst + encryptedletter
+  
+  return encryptedtekst
+
+start(10,14,16)
+tekst = input("Type your message:")
+print(encrypt(tekst))
