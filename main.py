@@ -10,6 +10,16 @@ def shift(tekst, amount):
   tweedeDeel = tekst[0:amount]
   return eersteDeel + tweedeDeel
 
-print(shift(alfabet,9))
-print(shift(alfabet,20))
-print(shift(alfabet,23))
+def start(a,b,c):  
+  global alfabet
+  global rotorA
+  global rotorB
+  global rotorC
+  rotorA = shift(alfabet,a)
+  rotorB = shift(alfabet,b)
+  rotorC = shift(alfabet,c)
+
+start(1,2,3)
+print(rotorA)
+print(rotorB)
+print(rotorC)
